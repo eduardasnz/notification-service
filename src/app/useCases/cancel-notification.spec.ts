@@ -32,10 +32,10 @@ describe('cancel notification', () => {
     const notificationRepository = new InMemoryNotificationsRepository()
     const cancelNotification = new CancelNotification(notificationRepository);
 
-    await expect(() => {
+    await expect(
       cancelNotification.execute({
         notificationId: "fake-fake"
       })
-    }).rejects.toThrow(NotificationNotFound);
+    ).rejects.toThrow(NotificationNotFound);
   })
 })

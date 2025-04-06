@@ -17,7 +17,8 @@ const config: Config = {
   "testEnvironment": "node",
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: ''
-  })
+  }),
+  moduleDirectories: ['node_modules', 'src'],
 }
 
 export default config
