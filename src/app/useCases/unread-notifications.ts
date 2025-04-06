@@ -3,18 +3,18 @@ import { NotificationRepository } from "../repository/notification-repository";
 import { NotificationNotFound } from "./errors/notification-not-found";
 
 
-interface ReadNotificationRequest {
+interface UnReadNotificationRequest {
   notificationId: string;
 }
 
-type ReadNotificationResponse = void;
+type UnReadNotificationResponse = void;
 
 @Injectable()
-export class ReadNotification {
+export class UnReadNotification {
 
   constructor(private notificationsRepository: NotificationRepository) { }
 
-  async execute(request: ReadNotificationRequest): Promise<ReadNotificationResponse> {
+  async execute(request: UnReadNotificationRequest): Promise<UnReadNotificationResponse> {
     const { notificationId } = request;
 
     const notification = await this.notificationsRepository.findById(notificationId);
@@ -23,7 +23,7 @@ export class ReadNotification {
       throw new NotificationNotFound();
     }
 
-    notification.read();
+    notification.unread();
 
     await this.notificationsRepository.save(notification);
 
