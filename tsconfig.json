@@ -20,6 +20,9 @@
     "resolveJsonModule": true,
     "noFallthroughCasesInSwitch": false,
     "paths": {
+      "src/*": [
+        "src/*"
+      ],
       "@application/*": [
         "/app/*"
       ],

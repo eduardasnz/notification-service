@@ -3,7 +3,8 @@ import { NotificationRepository } from "src/app/repository/notification-reposito
 
 
 export class InMemoryNotificationsRepository implements NotificationRepository {
-  
+
+
   public notifications: Notification[] = []
 
   findById(notificationId: string): Promise<Notification | null> {
@@ -36,5 +37,10 @@ export class InMemoryNotificationsRepository implements NotificationRepository {
   async countManyByRecipientId(recipientId: string): Promise<Number> {
     return this.notifications.filter(
       (notification) => notification.recipientId === recipientId).length
+  }
+
+  async findManyByRecipientId(recipientId: string): Promise<Notification[]> {
+    return this.notifications.filter(
+      (notification) => notification.recipientId === recipientId)
   }
 }
